@@ -26,10 +26,10 @@ function About() {
                     Written by{' '}
                     <a href={repository.user} target='blank'>
                         {manifest.author}
-                    </a>. 
+                    </a>.
                     Version {manifest.version}
                 </h4>
-                
+
                 <p style={{ marginBlock: 0 }}>
                     <a href={repository.plain} target={'blank'}>
                         Source
@@ -71,7 +71,7 @@ function About() {
 
             <div style={merge(x => [x.top, x.bottom])}>
                 <p style={{ marginBlock: 0 }}>
-                    <strong>This extension is not licensed under any circumstances.</strong> 
+                    <strong>This extension is not licensed under any circumstances.</strong>
                     <br />
                     Any projects which look the same as {manifest.name} but are not branded the same or are not authored by {manifest.author} are <strong>stolen content</strong>.
                     <br />
@@ -88,7 +88,7 @@ function About() {
                     <ul style={{ marginBlock: '0.25em', paddingLeft: '2em' }}>
                         <li>↝ Contact <strong>acquitefx@gmail.com</strong> via Email</li>
                         <br />
-                        <li>↝ Contact <strong>rosie.pie</strong> or <strong>rosie.nya</strong> via Discord</li>
+                        <li>↝ Contact <strong>rosie.pie</strong> via Discord</li>
                         <br />
                         <li>↝ <a href={repository.plain + '/issues/new'} target={'blank'}>Raise an issue</a> via the GitHub repository</li>
                     </ul>
