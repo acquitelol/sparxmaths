@@ -1,6 +1,6 @@
 {
     "name": "Azalea",
-    "version": "3.6.2",
+    "version": "3.6.3",
     "description": "The cutest SparxMaths extension for Chromium ~!",
     "manifest_version": 3,
     "author": "Rosie",
@@ -24,19 +24,20 @@
     "host_permissions": [
         "*://*.sparxmaths.uk/*",
         "https://www.sparxmaths.uk/*",
-        "*://auth.sparxmaths.uk/*"
+        "*://auth.sparxmaths.uk/*",
+        "*://*.sparx-learning.com/*"
     ],
 
     "content_scripts": [
         {
             "js": [ "index.js" ],
-            "matches": [ "https://*.sparxmaths.uk/*", "https://sparxmaths.uk/*" ],
+            "matches": [ "https://*.sparxmaths.uk/*", "https://sparxmaths.uk/*", "*://*.sparx-learning.com/*" ],
             "run_at": "document_start"
         }
     ],
 
     "externally_connectable": {
-        "matches": [ "https://*.sparxmaths.uk/*", "https://sparxmaths.uk/*" ]
+        "matches": [ "https://*.sparxmaths.uk/*", "https://sparxmaths.uk/*", "*://*.sparx-learning.com/*" ]
     },
 
     "web_accessible_resources": [
@@ -47,7 +48,8 @@
                 "core.css"
             ],
             "matches": [
-                "https://*.sparxmaths.uk/*"
+                "https://*.sparxmaths.uk/*",
+                "*://*.sparx-learning.com/*"
             ]
         }
     ],
