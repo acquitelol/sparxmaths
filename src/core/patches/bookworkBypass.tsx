@@ -45,10 +45,10 @@ const BookworkSection = ({ answers }: { answers: any[], azalea: boolean }) => {
                     return <div style={{ marginBlock: '2em' }} key={i}>
                         <div style={styles.item}>
                             <h6 style={commonStyles.merge(x => [
-                                x.flex, x.justify, 
-                                { 
-                                    fontWeight: 'bold', 
-                                    color: 'var(--palette-white)' 
+                                x.flex, x.justify,
+                                {
+                                    fontWeight: 'bold',
+                                    color: 'var(--palette-white)'
                                 }
                             ])}>
                                 ({new Date(store.date).toLocaleString()})
@@ -56,18 +56,18 @@ const BookworkSection = ({ answers }: { answers: any[], azalea: boolean }) => {
                             <div>
                                 {imageAnswers.length > 0 && <div style={commonStyles.merge(x => [x.flex, x.column, styles.images])}>
                                     {imageAnswers.map((answer, i) => (
-                                        <img 
+                                        <img
                                             src={answer}
                                             key={i}
-                                            style={{ 
+                                            style={{
                                                 maxWidth: '100%',
                                                 height: 'auto',
-                                                flexGrow: 1 
+                                                flexGrow: 1
                                             }}
                                         />
                                     ))}
                                 </div>}
-                                {textAnswers.length > 0 && <TextWithMaths 
+                                {textAnswers.length > 0 && <TextWithMaths
                                     text={textAnswers.join('$,\\;\\;$')}
                                     style={{ margin: 0, padding: 0, color: 'var(--palette-white)' }}
                                 />}
@@ -103,13 +103,13 @@ function handler() {
         // A simple conditional is much less intensive than a localStorage + JSON.parse call
         if (codeMap.get('code') !== code) {
             logger.log('Caching answer for this bookwork check...');
-            
+
             codeMap.set('code', code);
             codeMap.set('answers', bookwork.get(code) ?? []);
         }
 
         const answers = Array.isArray(codeMap.get('answers')) ? codeMap.get('answers').filter(x => Array.isArray(x.answers)) : [];
-    
+
         if (!topSection.find(x => x.props.azalea)) {
             topSection.push(<BookworkSection answers={answers} azalea />);
         }
@@ -134,10 +134,8 @@ function handler() {
 export default async function () {
     const page = await lazyDefine(() => document.querySelector('[id="root"]'), undefined, Infinity);
 
-    const observer = new MutationObserver(function (mutations) {
-        mutations.forEach(function (mutation) {
-            if (mutation.type === 'childList') handler();
-        });
+    const observer = new MutationObserver(mutations => {
+        mutations.forEach(mutation => mutation.type === 'childList' && handler());
     });
 
     observer.observe(page, { childList: true, subtree: true });
