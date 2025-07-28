@@ -17,7 +17,8 @@ function handler() {
       const users: unknown = args?.[0]?.users;
 
       if (Array.isArray(users)) {
-        users.find(user => user?.isCurrentUser).firstName = name.firstName;
+        const user = users.find(user => user?.isCurrentUser && typeof user?.firstName === 'string');
+        user.firstName = name.firstName;
       }
     });
 }
